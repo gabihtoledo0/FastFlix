@@ -3,17 +3,25 @@
 .screen-image {
   background-image: url(../Images/fundo-image.jpg);
   background-repeat: no-repeat;
+  background-size:cover;
   width: auto;
   height: 100vh;
-  filter: brightness(56%)
 }
 
 .section-text {
   color: #fff;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   width: 700px;
   margin: auto;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.logo {
+  border-radius: 4px;
+}
+
+.h1-title {
+  margin-bottom: 20px
 }

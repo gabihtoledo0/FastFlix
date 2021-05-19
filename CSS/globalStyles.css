@@ -14,6 +14,11 @@ h6 {
   line-height: 1.1;
 }
 
+a {
+  font-family: 'Secular One', sans-serif;
+  font-weight: 400;
+}
+
 div {
   font-family: 'KoHo', sans-serif;
   font-weight: 300;
