@@ -9,12 +9,12 @@
 }
 
 .section-text {
-  color: #fff;
+  color: var(--white);
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 750px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 150px;
   text-align: center;
 }
 
@@ -23,5 +23,27 @@
 }
 
 .h1-title {
-  margin-bottom: 20px
+  margin-bottom: 40px;
+  font-size: 48px;
+}
+
+.subtitle {
+  font-size: 32px;
+}
+
+.btn-modal {
+  background-color: var(--orangePrimary);
+  color: var(--white);
+}
+
+.error {
+  border-color: var(--error);
+}
+
+#res {
+  margin-top: 8px;
+}
+
+.text-error {
+  color: var(--error);
 }
