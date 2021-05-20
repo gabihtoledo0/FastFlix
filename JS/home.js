@@ -5,6 +5,6 @@ function passwordEmployee() {
     passwordEmployee.addClass('error');
     $("#res").html('Senha inválida').addClass('text-error');
   } else {
-    $(location).attr('href', './Clientes.html');
+    $(location).attr('href', '../HTML/Clientes.html');
   }
 }
