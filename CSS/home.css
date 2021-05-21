@@ -1,0 +1,49 @@
+@import url("./globalStyles.css");
+
+.screen-image {
+  background-image: url(../Images/fundo-image.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  width: auto;
+  height: 100vh;
+}
+
+.section-text {
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  width: 750px;
+  margin: auto;
+  margin-top: 150px;
+  text-align: center;
+}
+
+.logo {
+  border-radius: 4px;
+}
+
+.h1-title {
+  margin-bottom: 40px;
+  font-size: 48px;
+}
+
+.subtitle {
+  font-size: 32px;
+}
+
+.btn-modal {
+  background-color: var(--orangePrimary);
+  color: var(--white);
+}
+
+.error {
+  border-color: var(--error);
+}
+
+#res {
+  margin-top: 8px;
+}
+
+.text-error {
+  color: var(--error);
+}

@@ -1,0 +1,42 @@
+:root {
+  --redPrimary: #941b0c;
+  --redSecondary: #621708;
+  --orangePrimary: #bc3908;
+  --orangeSecondary: #ca5310;
+  --white: #FFF;
+  --error: #dc2f02;
+}
+
+body {
+  font-family: 'KoHo', sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Secular One', sans-serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+a {
+  font-family: 'Secular One', sans-serif;
+  font-weight: 400;
+}
+
+div {
+  font-family: 'KoHo', sans-serif;
+  font-weight: 300;
+}
+
+* {
+  min-height: 0;
+}
+
+a:hover {
+  outline-width: 0;
+}
