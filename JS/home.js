@@ -1,3 +1,10 @@
+document.addEventListener('keydown', function(e){
+  if(e.keyCode == 13){
+     e.preventDefault()
+     passwordEmployee()
+  }
+}, false);
+
 function passwordEmployee() {
   var passwordEmployee = $('#password-employee');
 
@@ -8,3 +15,4 @@ function passwordEmployee() {
     $(location).attr('href', '../HTML/Clientes.html');
   }
 }
+

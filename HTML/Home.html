@@ -20,12 +20,15 @@
   <body>
     <div class="screen-image">
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #941b0c;">
+        <a class="navbar-brand text-white" href="#">
+          <img src="../Images/fastflix.png" width="30" height="30" class="d-inline-block align-top logo" alt="">
+          FastFlix
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <a class="navbar-brand text-white" href="#">
-              <img src="../Images/fastflix.png" width="30" height="30" class="d-inline-block align-top logo" alt="">
-              FastFlix
-            </a>
             <li class="nav-item active">
               <a class="nav-link text-white" href="#modalEmployee" data-toggle="modal">Acesse a área de funcionário</a>
             </li>
@@ -58,7 +61,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-modal" onclick="passwordEmployee()">Entrar</button>
+            <button type="button" class="btn btn-modal" onkeypress="enterBlock()" onclick="passwordEmployee()">Entrar</button>
           </div>
         </div>
       </div>

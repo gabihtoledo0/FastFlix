@@ -6,14 +6,91 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=KoHo&family=Secular+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../CSS/home.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/clientes.css">
     <link rel="shortcut icon" href="../Images/favicon.ico" />
 
-    <title>FastFlix</title>
+    <title>Clientes</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../JS/home.js"></script>
+    <script src="../JS/clientes.js"></script>
   </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #941b0c;">
+      <a class="navbar-brand text-white" href="./Home.html">
+        <img src="../Images/fastflix.png" width="30" height="30" class="d-inline-block align-top logo" alt="">
+        FastFlix
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="#">Novo Cliente</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="./Home.html">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="main" class="container-fluid">
+      <div id="top" class="row">
+        <div class="col-md-3">
+            <h2>Clientes</h2>
+        </div>
+        <div class="col-md-6">
+          <div class="input-group h2">
+              <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Clientes">
+              <span class="input-group-btn">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+              </span>
+          </div>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn btn-primary pull-right h2">Novo Item</a>
+        </div>
+    </div>
+ 
+     <hr />
+     <div id="list" class="row">
+ 
+      <div class="table-responsive col-md-12">
+        <table class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+                <th class="actions">Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>1001</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
+                <td>Jes</td>
+                <td>01/01/2015</td>
+                <td class="actions">
+                    <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
+                    <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+                    <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                </td>
+            </tr>
+          </tbody>
+          </table>
+       </div>
+   </div>
+ 
+     <div id="bottom" class="row">
+     
+     </div> <!-- /#bottom -->
+    </div>  <!-- /#main -->
+
+  </body>
 </html>
