@@ -6,14 +6,148 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=KoHo&family=Secular+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../CSS/home.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/clientes.css">
     <link rel="shortcut icon" href="../Images/favicon.ico" />
 
-    <title>FastFlix</title>
+    <title>Clientes</title>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../JS/home.js"></script>
+    <script src="../JS/clientes.js"></script>
   </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #941b0c;">
+      <a class="navbar-brand text-white" href="./Home.html">
+        <img src="../Images/fastflix.png" width="30" height="30" class="d-inline-block align-top logo" alt="">
+        FastFlix
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="#">Novo Cliente</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="./Home.html">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="main" class="container-fluid">
+      <div id="top" class="row mt-5">
+        <div class="col-md-2">
+            <h2>Clientes</h2>
+        </div>
+        <div class="col-md-1">
+          <img class="image-client" src="../Images/streaming.svg" alt="clientes"></img>
+      </div>
+        <div class="col-md-6">
+          <div class="input-group h2">
+            <input name="data[search]" type="text" id="search" class="form-control" placeholder="Pesquisar Clientes" aria-label="Pesquisar Clientes">
+            <div class="input-group-append">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="button-search">&#128269;</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn btn-primary pull-right h2">Novo Clientes</a>
+        </div>
+      </div>
+ 
+     <hr />
+     <div id="list" class="row">
+ 
+      <div class="table-responsive col-md-12">
+        <table class="table table-striped" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data do Cadastro</th>
+                <th class="actions">Ações</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>1001</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
+                <td>Jes</td>
+                <td>01/01/2015</td>
+                <td class="actions">
+                    <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
+                    <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+                    <a class="btn btn-closed btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                </td>
+            </tr>
+          </tbody>
+          </table>
+       </div>
+      </div> <!-- /#list -->
+ 
+      <nav aria-label="Navegação de página exemplo">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Anterior">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Anterior</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Próximo">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Próximo</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>  <!-- /#main -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Título do modal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Deseja realmente excluir este item? </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Sim</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Título do modal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Texto do corpo do modal, é aqui.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Salvar mudanças</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
