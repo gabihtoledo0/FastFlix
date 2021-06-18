@@ -210,26 +210,29 @@ class Validator {
     ficha.dtcadastro = dia + "/"+ mes +"/" + ano;
     ficha.logradouro = document.getElementById("Logradouro").value;
     ficha.ncasa = document.getElementById("Numero").value;
-  
-    axios.post(URLAPP + '/fichas', ficha)
-        .then(function(response) {
-            if (response.status == 201) {
-                console.log(response.data)
-                // document.getElementById("res").innerText = "Ficha " + ficha.nome + " inserida com sucesso";
-            }
-        })
-        .catch(function(error) {
-            if (error.response) {
-                console.log(error.response.data);
-                console.log(error.response.status);
-                if (error.response.status == 409) {
-                  console.log("error")
-                    document.getElementById("res").innerText = "Ficha " + ficha.cpf + " em duplicidade";
-                }
-            } else {
-                console.log('Error', error.message);
-            }
-        });
+    
+    if(validator.validate(form) === ''){
+      axios.post(URLAPP + '/fichas', ficha)
+      .then(function(response) {
+          if (response.status == 201) {
+              console.log(response.data)
+              // document.getElementById("res").innerText = "Ficha " + ficha.nome + " inserida com sucesso";
+          }
+      })
+      .catch(function(error) {
+          if (error.response) {
+              console.log(error.response.data);
+              console.log(error.response.status);
+              if (error.response.status == 409) {
+                console.log("error")
+                  document.getElementById("res").innerText = "Ficha " + ficha.cpf + " em duplicidade";
+              }
+          } else {
+              console.log('Error', error.message);
+          }
+      });
+    }
+    validator.validate(form)
   }
   
   
