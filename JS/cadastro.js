@@ -1,3 +1,7 @@
+function prevent(e) {
+  e.preventDefault();
+}
+
 class Validator {
 
     constructor() {
@@ -42,14 +46,13 @@ class Validator {
   
             // invoca o método
             this[method](input,value);
-  
+
           }
         }
-  
       }, this);
-  
+
     }
-  
+
     // método para validar se tem um mínimo de caracteres
     minlength(input, minValue) {
   
@@ -109,7 +112,6 @@ class Validator {
     equal(input, inputName) {
   
       let inputToCompare = document.getElementsByName(inputName)[0];
-  
       let errorMessage = `Este campo precisa estar igual ao ${inputName}`;
   
       if(input.value != inputToCompare.value) {
@@ -123,8 +125,9 @@ class Validator {
       let inputValue = input.value;
   
       if(inputValue === '') {
+        
         let errorMessage = `Este campo é obrigatório`;
-  
+
         this.printMessage(input, errorMessage);
       }
   
@@ -180,68 +183,106 @@ class Validator {
     cleanValidations(validations) {
       validations.forEach(el => el.remove());
     }
-  
-  }
-  
+}
+
+function criarCliente() {
   let form = document.getElementById('register-form');
-  let submit = document.getElementById('btn-submit');
+
   
+
   let validator = new Validator();
+  let valid = true;
 
   const URLAPP = 'http://localhost:9007';
-  let resultado = "";
-  
-  function criarCliente() {
-    const data = new Date();
-    const ano = data.getFullYear()
-    const mes = data.getMonth()
-    const dia = data.getDay()
-  
-    let ficha = {};
-  
-    ficha.cpf = parseInt(document.getElementById("CPF").value);
-    ficha.nome = document.getElementById("name").value;
-    ficha.email = document.getElementById("email").value;
-    ficha.cep = document.getElementById("CEP").value;
-    ficha.celular = document.getElementById("Telefone").value;
-    ficha.pais = document.getElementById("Pais").value;
-    ficha.cidade = document.getElementById("Cidade").value;
-    ficha.senha = document.getElementById("password").value;
-    ficha.dtcadastro = dia + "/"+ mes +"/" + ano;
-    ficha.logradouro = document.getElementById("Logradouro").value;
-    ficha.ncasa = document.getElementById("Numero").value;
-    
-    if(validator.validate(form) === ''){
-      axios.post(URLAPP + '/fichas', ficha)
-      .then(function(response) {
-          if (response.status == 201) {
-              console.log(response.data)
-              // document.getElementById("res").innerText = "Ficha " + ficha.nome + " inserida com sucesso";
-          }
-      })
-      .catch(function(error) {
-          if (error.response) {
-              console.log(error.response.data);
-              console.log(error.response.status);
-              if (error.response.status == 409) {
-                console.log("error")
-                  document.getElementById("res").innerText = "Ficha " + ficha.cpf + " em duplicidade";
-              }
-          } else {
-              console.log('Error', error.message);
-          }
-      });
-    }
-    validator.validate(form)
-  }
-  
-  
-  if(submit){
-  // evento de envio do form, que valida os inputs
-  submit.addEventListener('click', function(e) {
-    e.preventDefault();
 
-    validator.validate(form);
-  });  
+  const data = new Date();
+  const ano = data.getFullYear()
+  const mes = data.getMonth()
+  const dia = data.getDay()
+
+  let ficha = {};
+
+  ficha.cpf = parseInt(document.getElementById("CPF").value);
+  ficha.nome = document.getElementById("name").value;
+  ficha.email = document.getElementById("email").value;
+  ficha.cep = document.getElementById("CEP").value;
+  ficha.celular = document.getElementById("Telefone").value;
+  ficha.pais = document.getElementById("Pais").value;
+  ficha.cidade = document.getElementById("Cidade").value;
+  ficha.senha = document.getElementById("password").value;
+  ficha.dtcadastro = dia + "/"+ mes +"/" + ano;
+  ficha.logradouro = document.getElementById("Logradouro").value;
+  ficha.ncasa = document.getElementById("Numero").value;
+
+  var inputs = form.getElementsByTagName('input')
+  let currentValidations = document.querySelectorAll('form .error-validation');
+
+  var len = inputs.length;
+  var validation = $(currentValidations).hasClass("error-validation")
+
+  for (var i = 0; i < inputs.length; i++) inputs[i].onblur = function(){ this.classList.add('hl'); }
+
+  for (var i = 0; i < inputs.length; i++) inputs[i].classList.add('hl')
+  
+  for(var i=0; i < len; i++){
+     if (!inputs[i].value){ 
+       valid = false;
+      }
   }
+
+  if (!valid || validation == true){
+    validator.validate(form)
+    console.log("falso")
+    return false;
+  } else {
+    axios.post(URLAPP + '/fichas', ficha)
+    .then(function(response) {
+        if (response.status == 201) {
+            console.log(response.data)
+            $("#modalSucess").modal({
+              show: true
+            });
+            // document.getElementById("res").innerText = "Ficha " + ficha.nome + " inserida com sucesso";
+        }
+    })
+    .catch(function(error) {
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            if (error.response.status == 409) {
+              console.log("error")
+                // document.getElementById("res").innerText = "Ficha " + ficha.cpf + " em duplicidade";
+            }
+        } else {
+            console.log('Error', error.message);
+        }
+    });
+    return true;
+   }
+}
+
+function validate(input) {
+
+  if (formSubmittedOnce === true) {
+
+    if (input.hasAttribute('required')) {
+      if (input.value.trim() == '') {
+        input.classList.remove('is-valid');
+        input.classList.add('is-invalid');
+        return false;
+      } else {
+        input.classList.remove('is-invalid');
+        input.classList.add('is-valid');
+        return true;
+      }
+    } else {
+      // if we get here, then any other inputs not marked as 'required' are valid
+      input.classList.add('is-valid');
+    }
+
+  }
+
+}
+
+
   

@@ -1,0 +1,13 @@
+.error-validation {
+  color: red
+}
+.is-invalid {
+  color: red
+}
+
+.is-valid {
+  color: black
+}
+
+input.hl:invalid { border-color: red; }
+input.hl:valid   { border-color:green; }
