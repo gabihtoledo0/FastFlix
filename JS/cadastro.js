@@ -188,8 +188,6 @@ class Validator {
 function criarCliente() {
   let form = document.getElementById('register-form');
 
-  
-
   let validator = new Validator();
   let valid = true;
 

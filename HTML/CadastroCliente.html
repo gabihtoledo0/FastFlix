@@ -31,12 +31,12 @@
       <form id="register-form" action="" onsubmit="criarCliente()">
       <div class="full-box">
         <label for="email">E-mail</label>
-        <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required>
+        <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required data-email-validate>
 
-    </div>
+      </div>
       <div class="half-box spacing">
           <label for="name">Nome Completo</label>
-          <input type="text" name="name" id="name" placeholder="Digite seu nome" required>
+          <input type="text" name="name" id="name" placeholder="Digite seu nome" maxlength="100" required data-only-letters>
       </div>
       <div class="half-box spacing">
         <label for="lastname">Senha</label>
@@ -48,7 +48,7 @@
       </div>
       <div class="half-box spacing">
         <label for="name">Data de nascimento</label>
-        <input type="text" name="data de nascimento" id="DataDeNascimento" placeholder="Ex: 00/00/0000" onkeypress="$(this).mask('00/00/0000')" required >
+        <input type="text" name="data de nascimento" id="dtNascimento" placeholder="Ex: 00/00/0000" onkeypress="$(this).mask('00/00/0000')" required >
     </div>
     <div class="half-box spacing">
         <label for="name">CPF</label>
@@ -64,26 +64,26 @@
     </div>
     <div class="half-box spacing">
       <label for="name">Pais</label>
-      <input type="text" name="Pais" id="Pais" placeholder="Ex: Brasil" required>
+      <input type="text" name="Pais" id="Pais" placeholder="Ex: Brasil" required data-only-letters>
     </div>
     <div class="half-box spacing">
         <label for="name">Estado</label>
-        <input type="text" name="Estado" id="Estado" placeholder="Ex: São Paulo" required>
+        <input type="text" name="Estado" id="Estado" placeholder="Ex: São Paulo" required data-only-letters>
     </div>
     <div class="half-box spacing">
         <label for="name">Cidade</label>
-        <input type="text" name="Cidade" id="Cidade" placeholder="Ex: São Paulo" required>
+        <input type="text" name="Cidade" id="Cidade" placeholder="Ex: São Paulo" required data-only-letters>
     </div>
     <div class="half-box spacing">
         <label for="name">Logradouro</label>
-        <input type="text" name="Logradouro" id="Logradouro" placeholder="Ex: Rua Paulista" required>
+        <input type="text" name="Logradouro" id="Logradouro" placeholder="Ex: Rua Paulista" required data-only-letters>
     </div>
     <div class="half-box spacing">
         <label for="name">Numero de Logradouro</label>
         <input type="text" name="Numero" id="Numero" placeholder="Ex: 80. ap 24F" required>
     </div>
       <div class="full-box">
-        <button id="btn-submit" type="button" onclick="criarCliente()" >Registrar</button>
+        <input id="btn-submit" type="button" onclick="criarCliente()" value="Registrar">
       </div>
     </form>
     </div>
