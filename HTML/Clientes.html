@@ -58,7 +58,7 @@
         </div>
         <div class="col-md-5">
             <button onclick="window.location.href = './CadastroCliente.html'" class="btn btn-primary pull-right h2">Novo Cliente</button>
-            <button class='btn btn-success btn-xs' href='#'>Visualizar</button>
+            <button class='btn btn-success btn-xs' onclick="visualizar()">Visualizar</button>
             <button class='btn btn-warning btn-xs' onclick="edit()">Editar</button>
             <button class='btn btn-closed btn-xs'  data-toggle='modal' data-target='#delete-modal' id="button-excluir">Excluir</button>
         </div>
@@ -75,7 +75,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Data do Cadastro</th>
+                <th>Data de Cadastro</th>
                 <th class="actions">Ações</th>
               </tr>
           </thead>
@@ -107,21 +107,117 @@
       </div>
     </div>
 
-    <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal fade" id="modalVisualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Título do modal</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Dados do Cliente</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p>Texto do corpo do modal, é aqui.</p>
+            <div class="row">
+              <div class="col-5">
+                <label for="email">E-mail</label>
+              </div>
+              <div class="col-7">
+                <p id="email"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="name">Nome Completo</label>
+              </div>
+              <div class="col-7">
+                <p id="name"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="dtNascimento">Data de nascimento</label>
+              </div>
+              <div class="col-7">
+                <p id="dtNascimento"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="dtCadastro">Data de Cadastro</label>
+              </div>
+              <div class="col-7">
+                <p id="dtCadastro"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="CPF">CPF</label>
+              </div>
+              <div class="col-7">
+                <p id="CPF"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="Telefone">Telefone</label>
+              </div>
+              <div class="col-7">
+                <p id="Telefone"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="CEP">CEP</label>
+              </div>
+              <div class="col-7">
+                <p id="CEP"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="Pais">País</label>
+              </div>
+              <div class="col-7">
+                <p id="Pais"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="Cidade">Cidade</label>
+              </div>
+              <div class="col-7">
+                <p id="Cidade"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="Logradouro">Logradouro</label>
+              </div>
+              <div class="col-7">
+                <p id="Logradouro"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-5">
+                <label for="Numero">Número de Logradouro</label>
+              </div>
+              <div class="col-7">
+                <p id="Numero"></p>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Salvar mudanças</button>
           </div>
         </div>
       </div>

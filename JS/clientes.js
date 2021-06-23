@@ -83,7 +83,6 @@ function removed(){
 
 function edit(){
   let id = document.getElementById("id-cliente").value
-  let isIdValid = true
   let resultado = ''
   const URLAPP = 'http://localhost:9007';
 
@@ -100,7 +99,6 @@ function edit(){
     })
       .catch(function(error) {
         if (error.response) {
-          isIdValid = false
           resultado = "Insira um id para visualizar o cliente";
           return document.getElementById("res").innerText = resultado
       }
@@ -109,6 +107,52 @@ function edit(){
     resultado = "Insira um id para visualizar o cliente";
     document.getElementById("res").innerText = resultado
   }
+}
+
+function visualizar(){
+  const URLAPP = 'http://localhost:9007';
+
+  const customerID = document.getElementById("id-cliente").value
+  let ficha = {};
+  let resultado = ''
+
+  if(customerID !== ""){
+    axios.get(URLAPP + '/fichas/' + customerID)
+    .then(function(response) {
+      if (response.status == 200) {
+        $("#modalVisualizar").modal({
+          show: true
+        });
+
+        ficha = response.data;
+        document.getElementById("CPF").innerHTML = ficha.cpf;
+        document.getElementById("name").innerHTML = ficha.nome;
+        document.getElementById("email").innerHTML = ficha.email;
+        document.getElementById("CEP").innerHTML = ficha.cep;
+        document.getElementById("Telefone").innerHTML = ficha.celular;
+        document.getElementById("Pais").innerHTML = ficha.pais;
+        document.getElementById("Cidade").innerHTML = ficha.cidade;
+        document.getElementById("dtCadastro").innerHTML = ficha.dtcadastro
+        document.getElementById("dtNascimento").innerHTML = ficha.dtnascimento
+        document.getElementById("Logradouro").innerHTML = ficha.logradouro
+        document.getElementById("Numero").innerHTML = ficha.ncasa
+      }
+      if (response.status == 204) {
+        return document.getElementById("res").innerText = "ID " + customerID + " não existe";
+      }
+    })
+    .catch(function(error) {
+      if (error.response) {
+        resultado = "Insira um id para visualizar o cliente";
+        return document.getElementById("res").innerText = resultado
+      }
+    });
+  } else {
+    resultado = "Insira um id para visualizar o cliente";
+    document.getElementById("res").innerText = resultado
+  }
+
+  
 }
 
 main()

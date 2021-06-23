@@ -18,3 +18,12 @@
   color: #e60013;
   font-size: 12px;
 }
+
+label {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+p {
+  word-wrap: break-word;
+}
