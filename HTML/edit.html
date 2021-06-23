@@ -20,14 +20,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="../JS/cadastro.js"></script>
+    <script src="../JS/edit.js"></script>
 
 </head>
 
   <body>
     <div id="main-container">
 
-      <h1>Cadastre-se para acessar o Fastflix</h1>
+      <h1>Altere os dados do cliente</h1>
       <form id="register-form" action="" onsubmit="criarCliente()">
       <div class="full-box">
         <label for="email">E-mail</label>
@@ -67,10 +67,6 @@
       <input type="text" name="Pais" id="Pais" placeholder="Ex: Brasil" required data-only-letters>
     </div>
     <div class="half-box spacing">
-        <label for="name">Estado</label>
-        <input type="text" name="Estado" id="Estado" placeholder="Ex: São Paulo" required data-only-letters>
-    </div>
-    <div class="half-box spacing">
         <label for="name">Cidade</label>
         <input type="text" name="Cidade" id="Cidade" placeholder="Ex: São Paulo" required data-only-letters>
     </div>
@@ -83,8 +79,8 @@
         <input type="text" name="Numero" id="Numero" placeholder="Ex: 80. ap 24F" required>
     </div>
       <div class="full-box">
-        <input id="btn-submit" type="button" onclick="criarCliente()" value="Voltar">
-        <input id="btn-submit" type="button" onclick="voltar()" value="Registrar">
+        <input id="btn-submit" type="button" onclick="voltar()" value="Voltar"></br>
+        <input id="btn-submit" type="button" onclick="alterarFicha()" value="Registrar">
       </div>
     </form>
     </div>
@@ -101,10 +97,9 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Cadastro realizado com sucesso</p>
+          <p>Cliente atualizado com sucesso</p>
         </div>
         <div class="modal-footer">
-          <button type="button" onclick="window.location.reload();" class="btn btn-secondary" data-dismiss="modal">Cadastrar outro cliente</button>
           <button type="button" class="btn btn-primary" onclick="window.location.href = './Clientes.html'">Voltar para Home</button>
         </div>
       </div>
@@ -121,7 +116,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>CPF em duplicidade</p>
+          <p>Algo deu errado, tente novamente</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Tentar novamente</button>

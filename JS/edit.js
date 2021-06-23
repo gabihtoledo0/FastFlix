@@ -82,7 +82,7 @@ class Validator {
     // método para validar strings que só contem letras
     onlyletters(input) {
   
-      let re = /^[A-Za-z]+$/;;
+      let re = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
   
       let inputValue = input.value;
   
@@ -91,7 +91,6 @@ class Validator {
       if(!re.test(inputValue)) {
         this.printMessage(input, errorMessage);
       }
-  
     }
   
     // método para validar e-mail
@@ -188,7 +187,52 @@ class Validator {
 function buscarFicha() {
   const URLAPP = 'http://localhost:9007';
 
+  const customerID = localStorage.getItem("id-cliente")
+
   let ficha = {};
+
+  axios.get(URLAPP + '/fichas/' + customerID)
+    .then(function(response) {
+      if (response.status == 200) {
+          ficha = response.data;
+          document.getElementById("CPF").value = ficha.cpf;
+          document.getElementById("name").value = ficha.nome;
+          document.getElementById("email").value = ficha.email;
+          document.getElementById("CEP").value = ficha.cep;
+          document.getElementById("Telefone").value = ficha.celular;
+          document.getElementById("Pais").value = ficha.pais;
+          document.getElementById("Cidade").value = ficha.cidade;
+          document.getElementById("password").value = ficha.senha;
+          document.getElementById("dtNascimento").value = ficha.dtnascimento
+          document.getElementById("Logradouro").value = ficha.logradouro
+          document.getElementById("Numero").value = ficha.ncasa
+      }
+    })
+    .catch(function(error) {
+        if (error.response) {
+            console.log(error.response.data);
+        } else if (error.request) {
+            console.log(error.request);
+        } else {
+            console.log('Error', error.message);
+        }
+    });
+}
+
+function voltar(){
+  localStorage.removeItem("id-cliente")
+  return window.location.href = "./Clientes.html"
+}
+
+function alterarFicha(){
+  let form = document.getElementById('register-form');
+  const URLAPP = 'http://localhost:9007';
+  let ficha = {}
+
+  let validator = new Validator();
+  let valid = true;
+
+  const customerID = localStorage.getItem("id-cliente")
 
   ficha.cpf = document.getElementById("CPF").value;
   ficha.nome = document.getElementById("name").value;
@@ -202,45 +246,50 @@ function buscarFicha() {
   ficha.logradouro = document.getElementById("Logradouro").value;
   ficha.ncasa = document.getElementById("Numero").value;
 
-  axios.get(URLAPP + '/fichas/' + customerID)
-    .then(function(response) {
-      if (response.status == 200) {
-          ficha = response.data;
-          document.getElementById("cpf").value = ficha.cpf;
-          document.getElementById("nome").value = ficha.nome;
-          document.getElementById("email").value = ficha.email;
-          document.getElementById("cep").value = ficha.cep;
-          document.getElementById("celular").value = ficha.celular;
-          document.getElementById("pais").value = ficha.pais;
-          document.getElementById("cidade").value = ficha.cidade;
-          document.getElementById("senha").value = ficha.senha;
-          document.getElementById("logradouro").value = ficha.logradouro
-          document.getElementById("ncasa").value = ficha.ncasa
-          document.getElementById("customerID").value = ficha.customerID
+  var inputs = form.getElementsByTagName('input')
+  let currentValidations = document.querySelectorAll('form .error-validation');
+
+  var len = inputs.length;
+  var validation = $(currentValidations).hasClass("error-validation")
+
+  for (var i = 0; i < inputs.length; i++) inputs[i].onblur = function(){ this.classList.add('hl'); }
+
+  for (var i = 0; i < inputs.length; i++) inputs[i].classList.add('hl')
+  
+  for(var i=0; i < len; i++){
+     if (!inputs[i].value){ 
+       valid = false;
       }
-    })
-    .catch(function(error) {
-        if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            if (error.response.status == 409) {
-              $("#modalError").modal({
-                show: true
-              });
-                resultado = "CPF em duplicidade";
-            }
-        } else if (error.request) {
-            console.log(error.request);
-        } else {
-            console.log('Error', error.message);
-        }
-    });
-}
+  }
 
+  if (!valid || validation == true){
+    validator.validate(form)
+    return false;
 
-function voltar(){
-  localStorage.removeItem("id-cliente")
-  return window.location.href = "./Home.html"
+  } else {
+    axios.put(URLAPP + '/fichas/' + customerID, ficha)
+      .then(function(response) {
+          if (response.status == 200) {
+            localStorage.removeItem("id-cliente")
+            $("#modalSucess").modal({
+              show: true
+            });
+          }
+      })
+      .catch(function(error) {
+          // handle error
+          if (error.response) {
+            $("#modalError").modal({
+              show: true
+            });
+          } else if (error.request) {
+              console.log(error.request);
+          } else {
+              console.log('Error', error.message);
+          }
+      });
+  }
+  return true
 }
 
 buscarFicha()

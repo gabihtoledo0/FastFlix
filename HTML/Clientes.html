@@ -50,21 +50,22 @@
         <div class="col-md-4">
           <div class="input-group h2">
             <div style="display: flex; flex-direction: column; width: 100%;">
-              <input name="id" type="text" id="id-cliente" class="form-control" placeholder="ID" aria-label="ID">
+              <input name="id" type="number" id="id-cliente" class="form-control" placeholder="ID" aria-label="ID">
               <div id="res" class="error">
               </div> 
             </div>
           </div>
         </div>
         <div class="col-md-5">
-            <button href="./CadastroCliente.html" class="btn btn-primary pull-right h2">Novo Clientes</button>
+            <button onclick="window.location.href = './CadastroCliente.html'" class="btn btn-primary pull-right h2">Novo Cliente</button>
             <button class='btn btn-success btn-xs' href='#'>Visualizar</button>
             <button class='btn btn-warning btn-xs' onclick="edit()">Editar</button>
             <button class='btn btn-closed btn-xs'  data-toggle='modal' data-target='#delete-modal' id="button-excluir">Excluir</button>
         </div>
       </div>
  
-     <hr />
+     <br />
+     <br />
      <div id="list" class="row">
  
       <div class="table-responsive col-md-12">
@@ -83,27 +84,6 @@
           </table>
        </div>
       </div> <!-- /#list -->
- 
-      <nav aria-label="Navegação de página exemplo">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Anterior">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Anterior</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Próximo">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Próximo</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>  <!-- /#main -->
 
     <!-- Modal -->
     <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">

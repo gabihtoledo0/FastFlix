@@ -82,7 +82,7 @@ class Validator {
     // método para validar strings que só contem letras
     onlyletters(input) {
   
-      let re = /^[A-Za-z]+$/;;
+      let re = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
   
       let inputValue = input.value;
   
@@ -196,11 +196,11 @@ function criarCliente() {
   const data = new Date();
   const ano = data.getFullYear()
   const mes = data.getMonth()
-  const dia = data.getDay()
+  const dia = data.getDate()
 
   let ficha = {};
 
-  ficha.cpf = document.getElementById("CPF").value;
+  ficha.cpf = parseInt(document.getElementById("CPF").value);
   ficha.nome = document.getElementById("name").value;
   ficha.email = document.getElementById("email").value;
   ficha.cep = document.getElementById("CEP").value;
@@ -231,6 +231,7 @@ function criarCliente() {
 
   if (!valid || validation == true){
     validator.validate(form)
+    console.log(ficha.cpf)
     return false;
 
   } else {
@@ -240,19 +241,22 @@ function criarCliente() {
             $("#modalSucess").modal({
               show: true
             });
-        }
+     }
     })
     .catch(function(error) {
         if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            if (error.response.status == 409) {
-              $("#modalError").modal({
-                show: true
-              });
-            }
+          $("#modalError").modal({
+            show: true
+          }); 
+          if (error.response.status == 409) {
+            $("#modalError").modal({
+              show: true
+            });   
+          }
         } else {
-            console.log('Error', error.message);
+          $("#modalError").modal({
+            show: true
+          });   
         }
     });
     return true;
