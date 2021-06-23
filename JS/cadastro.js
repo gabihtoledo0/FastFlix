@@ -205,8 +205,6 @@ function criarCliente() {
     todayMonth = mes.toString();
   }
 
-  console.log(todayMonth)
-
   let ficha = {};
 
   ficha.cpf = parseInt(document.getElementById("CPF").value);
@@ -240,7 +238,6 @@ function criarCliente() {
 
   if (!valid || validation == true){
     validator.validate(form)
-    console.log(ficha.cpf)
     return false;
 
   } else {
@@ -258,7 +255,7 @@ function criarCliente() {
             show: true
           }); 
           if (error.response.status == 409) {
-            $("#modalError").modal({
+            $("#modalCPFInvalido").modal({
               show: true
             });   
           }
