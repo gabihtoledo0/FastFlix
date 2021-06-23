@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../JS/clientes.js"></script>
+    <script src="../JS/clientes.js" defer></script>
   </head>
 
   <body>
@@ -47,16 +47,20 @@
         <div class="col-md-1">
           <img class="image-client" src="../Images/streaming.svg" alt="clientes"></img>
       </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="input-group h2">
-            <input name="data[search]" type="text" id="search" class="form-control" placeholder="Pesquisar Clientes" aria-label="Pesquisar Clientes">
-            <div class="input-group-append">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="button-search">&#128269;</button>
+            <div style="display: flex; flex-direction: column; width: 100%;">
+              <input name="id" type="text" id="id-cliente" class="form-control" placeholder="ID" aria-label="ID">
+              <div id="res" class="error">
+              </div> 
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-            <a href="./CadastroCliente.html" class="btn btn-primary pull-right h2">Novo Clientes</a>
+        <div class="col-md-5">
+            <button href="./CadastroCliente.html" class="btn btn-primary pull-right h2">Novo Clientes</button>
+            <button class='btn btn-success btn-xs' href='#'>Visualizar</button>
+            <button class='btn btn-warning btn-xs' onclick="edit()">Editar</button>
+            <button class='btn btn-closed btn-xs'  data-toggle='modal' data-target='#delete-modal' id="button-excluir">Excluir</button>
         </div>
       </div>
  
@@ -64,7 +68,7 @@
      <div id="list" class="row">
  
       <div class="table-responsive col-md-12">
-        <table class="table table-striped" cellspacing="0" cellpadding="0">
+        <table class="table table-striped" cellspacing="0" cellpadding="0" id="tabela">
           <thead>
             <tr>
                 <th>ID</th>
@@ -74,18 +78,7 @@
                 <th class="actions">Ações</th>
               </tr>
           </thead>
-          <tbody>
-            <tr>
-                <td>1001</td>
-                <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                <td>Jes</td>
-                <td>01/01/2015</td>
-                <td class="actions">
-                    <a class="btn btn-success btn-xs" href="view.html">Visualizar</a>
-                    <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-                    <a class="btn btn-closed btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-                </td>
-            </tr>
+          <tbody id="tbody">
           </tbody>
           </table>
        </div>
@@ -122,9 +115,12 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">Deseja realmente excluir este item? </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Sim</button>
+          <div class="modal-body">
+            Deseja realmente excluir este item?
+          </div>
+          
+          <div class="modal-footer"> 
+              <button type="button" id="excluir" onclick="removed()" class="btn btn-primary">Sim</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
           </div>
         </div>

@@ -83,7 +83,8 @@
         <input type="text" name="Numero" id="Numero" placeholder="Ex: 80. ap 24F" required>
     </div>
       <div class="full-box">
-        <input id="btn-submit" type="button" onclick="criarCliente()" value="Registrar">
+        <input id="btn-submit" type="button" onclick="criarCliente()" value="Voltar">
+        <input id="btn-submit" type="button" onclick="voltar()" value="Registrar">
       </div>
     </form>
     </div>
@@ -120,7 +121,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Algo de errado aconteceu</p>
+          <p>CPF em duplicidade</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Tentar novamente</button>
