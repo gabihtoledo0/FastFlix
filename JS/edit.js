@@ -91,7 +91,6 @@ class Validator {
       if(!re.test(inputValue)) {
         this.printMessage(input, errorMessage);
       }
-  
     }
   
     // método para validar e-mail
@@ -185,29 +184,57 @@ class Validator {
     }
 }
 
-function criarCliente() {
+function buscarFicha() {
+  const URLAPP = 'http://localhost:9007';
+
+  const customerID = localStorage.getItem("id-cliente")
+
+  let ficha = {};
+
+  axios.get(URLAPP + '/fichas/' + customerID)
+    .then(function(response) {
+      if (response.status == 200) {
+          ficha = response.data;
+          document.getElementById("CPF").value = ficha.cpf;
+          document.getElementById("name").value = ficha.nome;
+          document.getElementById("email").value = ficha.email;
+          document.getElementById("CEP").value = ficha.cep;
+          document.getElementById("Telefone").value = ficha.celular;
+          document.getElementById("Pais").value = ficha.pais;
+          document.getElementById("Cidade").value = ficha.cidade;
+          document.getElementById("password").value = ficha.senha;
+          document.getElementById("dtNascimento").value = ficha.dtnascimento
+          document.getElementById("Logradouro").value = ficha.logradouro
+          document.getElementById("Numero").value = ficha.ncasa
+      }
+    })
+    .catch(function(error) {
+        if (error.response) {
+            console.log(error.response.data);
+        } else if (error.request) {
+            console.log(error.request);
+        } else {
+            console.log('Error', error.message);
+        }
+    });
+}
+
+function voltar(){
+  localStorage.removeItem("id-cliente")
+  return window.location.href = "./Clientes.html"
+}
+
+function alterarFicha(){
   let form = document.getElementById('register-form');
+  const URLAPP = 'http://localhost:9007';
+  let ficha = {}
 
   let validator = new Validator();
   let valid = true;
 
-  const URLAPP = 'http://localhost:9007';
+  const customerID = localStorage.getItem("id-cliente")
 
-  const data = new Date();
-  const ano = data.getFullYear()
-  const mes = data.getMonth()+1
-  const dia = data.getDate()
-
-  let todayMonth;
-  if (mes < 10) {
-    todayMonth = '0' + mes;
-  } else {
-    todayMonth = mes.toString();
-  }
-
-  let ficha = {};
-
-  ficha.cpf = parseInt(document.getElementById("CPF").value);
+  ficha.cpf = document.getElementById("CPF").value;
   ficha.nome = document.getElementById("name").value;
   ficha.email = document.getElementById("email").value;
   ficha.cep = document.getElementById("CEP").value;
@@ -216,7 +243,6 @@ function criarCliente() {
   ficha.cidade = document.getElementById("Cidade").value;
   ficha.senha = document.getElementById("password").value;
   ficha.dtnascimento = document.getElementById("dtNascimento").value
-  ficha.dtcadastro = dia + "/"+ todayMonth +"/" + ano;
   ficha.logradouro = document.getElementById("Logradouro").value;
   ficha.ncasa = document.getElementById("Numero").value;
 
@@ -241,30 +267,29 @@ function criarCliente() {
     return false;
 
   } else {
-    axios.post(URLAPP + '/fichas', ficha)
-    .then(function(response) {
-        if (response.status == 201) {
+    axios.put(URLAPP + '/fichas/' + customerID, ficha)
+      .then(function(response) {
+          if (response.status == 200) {
+            localStorage.removeItem("id-cliente")
             $("#modalSucess").modal({
               show: true
             });
-     }
-    })
-    .catch(function(error) {
-        if (error.response) {
-          $("#modalError").modal({
-            show: true
-          }); 
-          if (error.response.status == 409) {
-            $("#modalCPFInvalido").modal({
-              show: true
-            });   
           }
-        } else {
-          $("#modalError").modal({
-            show: true
-          });   
-        }
-    });
-    return true;
-   }
+      })
+      .catch(function(error) {
+          // handle error
+          if (error.response) {
+            $("#modalError").modal({
+              show: true
+            });
+          } else if (error.request) {
+              console.log(error.request);
+          } else {
+              console.log('Error', error.message);
+          }
+      });
+  }
+  return true
 }
+
+buscarFicha()
