@@ -195,8 +195,17 @@ function criarCliente() {
 
   const data = new Date();
   const ano = data.getFullYear()
-  const mes = data.getMonth()
+  const mes = data.getMonth()+1
   const dia = data.getDate()
+
+  let todayMonth;
+  if (mes < 10) {
+    todayMonth = '0' + mes;
+  } else {
+    todayMonth = mes.toString();
+  }
+
+  console.log(todayMonth)
 
   let ficha = {};
 
@@ -209,7 +218,7 @@ function criarCliente() {
   ficha.cidade = document.getElementById("Cidade").value;
   ficha.senha = document.getElementById("password").value;
   ficha.dtnascimento = document.getElementById("dtNascimento").value
-  ficha.dtcadastro = dia + "/"+ mes +"/" + ano;
+  ficha.dtcadastro = dia + "/"+ todayMonth +"/" + ano;
   ficha.logradouro = document.getElementById("Logradouro").value;
   ficha.ncasa = document.getElementById("Numero").value;
 
