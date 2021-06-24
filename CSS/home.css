@@ -1,7 +1,7 @@
 @import url("./globalStyles.css");
 
 .screen-image {
-  background-image: url(../Images/fundo-image.jpg);
+  background-image: url('../Images/fundo-image.jpg');
   background-repeat: no-repeat;
   background-size:cover;
   width: auto;
