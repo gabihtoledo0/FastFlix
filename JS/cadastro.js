@@ -270,6 +270,5 @@ function criarCliente() {
 }
 
 function voltar(){
-  localStorage.removeItem("id-cliente")
   return window.location.href = "./Clientes.html"
 }
