@@ -1,6 +1,9 @@
 # FastFlix
 FastFlix a plataforma de filmes e séries gratuitas pra vc ;)
 
+# Senha de FUncionário
+FastFlix@1904
+
 # Formato de código:
 - Toda página html utilizar esse HEAD:
 
