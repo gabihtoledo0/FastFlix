@@ -268,3 +268,8 @@ function criarCliente() {
     return true;
    }
 }
+
+function voltar(){
+  localStorage.removeItem("id-cliente")
+  return window.location.href = "./Clientes.html"
+}
