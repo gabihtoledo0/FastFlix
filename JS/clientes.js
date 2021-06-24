@@ -13,20 +13,20 @@ function criarLinha(clientes){
   let tdId = document.createElement("td");
   let tdName = document.createElement("td");
   let tdEmail = document.createElement("td");
-  let tdCelular = document.createElement("td");
   let tdDtCadastro = document.createElement("td");
+  let tdCPF = document.createElement("td");
 
   tdId.innerHTML = clientes.customerID
   tdName.innerHTML = clientes.nome
   tdEmail.innerHTML = clientes.email
   tdDtCadastro.innerHTML = clientes.dtcadastro
-  tdCelular.innerHTML = clientes.celular
+  tdCPF.innerHTML = clientes.cpf
 
   linha.appendChild(tdId);
   linha.appendChild(tdName);
   linha.appendChild(tdEmail);
+  linha.appendChild(tdCPF);
   linha.appendChild(tdDtCadastro);
-  linha.appendChild(tdCelular);
 
   return linha;
 }
